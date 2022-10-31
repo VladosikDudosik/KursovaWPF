@@ -10,8 +10,8 @@
     <Grid>
         <StackPanel Width="500" VerticalAlignment="Center">
             <Label Content="Авторизація" FontSize="30" FontWeight="Bold"/>
-            <TextBox x:Name="TextBoxLogin" FontSize="14" materialDesign:HintAssist.Hint="Введіть логін" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Cursor="Arrow"/>
-            <PasswordBox x:Name="PasswordBox" FontSize="14" materialDesign:HintAssist.Hint="Введіть пароль"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+            <TextBox Text="admin" x:Name="TextBoxLogin" FontSize="14" materialDesign:HintAssist.Hint="Введіть логін" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Cursor="Arrow"/>
+            <PasswordBox Password="admin" x:Name="PasswordBox" FontSize="14" materialDesign:HintAssist.Hint="Введіть пароль"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
             <Button x:Name="ButtonLogin" Content="Увійти" Margin="0 20" Height="39" Cursor="Hand" Click="ButtonLogin_Click" />
             <Label Cursor="Hand" x:Name="ButtonGuest" Content="Увійти як гість" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" MouseLeftButtonDown="ButtonGuest_MouseLeftButtonDown"/>
         </StackPanel>

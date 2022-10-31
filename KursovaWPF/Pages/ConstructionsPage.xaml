@@ -6,7 +6,7 @@
       xmlns:materialDesign ="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:KursovaWPF.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="950" d:DesignWidth="1200"
       Title="ConstructionsPage" Initialized="Page_Initialized">
 
     <Grid Background="White">
@@ -43,13 +43,30 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <StackPanel Grid.Column="1" Background="Azure">
-                <Label Content="Нова конструкція" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
-                <TextBox x:Name="TextBoxName" materialDesign:HintAssist.Hint="Назва" Margin="20"/>
-                <TextBox x:Name="TextBoxDesctiption" materialDesign:HintAssist.Hint="Опис" Margin="20" />
-                <TextBox x:Name="TextBoxExample" materialDesign:HintAssist.Hint="Приклад" Margin="20" TextWrapping="Wrap"/>
-                <Button  x:Name="ButtonInsert" Content="Додати" Margin="10" FontSize="20" Height="50" Click="ButtonInsert_Click"/>
+            <StackPanel Grid.Column="1"  x:Name="InsertForm">
+                    <Label Content="Нова конструкція" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                    <TextBox x:Name="TextBoxName" materialDesign:HintAssist.Hint="Назва" Margin="20"/>
+                    <TextBox x:Name="TextBoxDesctiption" materialDesign:HintAssist.Hint="Опис" Margin="20" />
+                    <TextBox x:Name="TextBoxExample" materialDesign:HintAssist.Hint="Приклад" Margin="20" TextWrapping="Wrap"/>
+                    <Button  x:Name="ButtonInsert" Content="Додати" Margin="10" FontSize="20" Height="50" Click="ButtonInsert_Click"/>
+                </StackPanel>
+            <StackPanel Grid.Column="1" x:Name="UpdateForm" Visibility="Hidden">
+
+                <Label Content="Редагування" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                <TextBox x:Name="TextBoxUpdateName" materialDesign:HintAssist.Hint="Назва" Margin="20"/>
+                <TextBox x:Name="TextBoxUpdateDesctiption" materialDesign:HintAssist.Hint="Опис" Margin="20" />
+                <TextBox x:Name="TextBoxUpdateExample" materialDesign:HintAssist.Hint="Приклад" Margin="20" TextWrapping="Wrap"/>
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" x:Name="ButtonCansel" Click="ButtonCansel_Click" Content="Скасувати" Margin="10" FontSize="20" Height="50" />
+                    <Button Grid.Column="1" x:Name="ButtonUpdate" Click="ButtonUpdate_Click" Content="Редагувати" Margin="10" FontSize="20" Height="50"  />
+                </Grid>
+
             </StackPanel>
+
         </Grid>
        
         

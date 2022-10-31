@@ -24,6 +24,7 @@ namespace KursovaWPF.Pages
     /// </summary>
     public partial class ConstructionsPage : Page
     {
+        string EditId;
         public ConstructionsPage()
         {
             InitializeComponent();
@@ -105,6 +106,40 @@ namespace KursovaWPF.Pages
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
+            InsertForm.Visibility = Visibility.Hidden;
+            UpdateForm.Visibility = Visibility.Visible;
+            DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            EditId = dataRowView[0].ToString();
+            TextBoxUpdateName.Text = dataRowView[1].ToString();
+            TextBoxUpdateDesctiption.Text = dataRowView[2].ToString();
+            TextBoxUpdateExample.Text = dataRowView[3].ToString();
+        }
+
+        private void ButtonCansel_Click(object sender, RoutedEventArgs e)
+        {
+            InsertForm.Visibility = Visibility.Visible;
+            UpdateForm.Visibility = Visibility.Hidden;
+        }
+
+        private void ButtonUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                SqlConnection connection = DataBase.Connection;
+                SqlCommand command = new SqlCommand($"UPDATE Constructions SET Name = '{TextBoxUpdateName.Text}' WHERE Construction_id = {EditId}", connection);
+                command.ExecuteNonQuery();
+                command.CommandText = $"UPDATE Examples SET Example = '{TextBoxUpdateExample.Text}' WHERE Example_id = (SELECT Example_id FROM Constructions WHERE Construction_id = {EditId})";
+                command.ExecuteNonQuery();
+                command.CommandText = $"UPDATE Descriptions SET Description = '{TextBoxUpdateDesctiption.Text}' WHERE Description_id = (SELECT Description_id FROM Constructions WHERE Construction_id = {EditId})";
+                command.ExecuteNonQuery();
+            }
+            catch
+            {
+                MessageBox.Show("Виникла помилка!", "Помилка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            InsertForm.Visibility = Visibility.Visible;
+            UpdateForm.Visibility = Visibility.Hidden;
+            LoadTable();
         }
     }
 }
