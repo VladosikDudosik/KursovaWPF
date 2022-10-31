@@ -113,6 +113,5 @@ namespace KursovaWPF.Helpers
             reader.Close();
             return res;
         }
-
     }
 }

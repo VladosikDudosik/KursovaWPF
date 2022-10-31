@@ -27,7 +27,7 @@ namespace KursovaWPF.Pages
 
         private void Page_Initialized(object sender, EventArgs e)
         {
-            TableOperators.ItemsSource = DataBase.SelectAllOperators();
+            //TableOperators.ItemsSource = DataBase.SelectAllOperators();
         }
     }
 }

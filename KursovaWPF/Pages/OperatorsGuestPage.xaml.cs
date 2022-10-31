@@ -16,18 +16,17 @@ using KursovaWPF.Helpers;
 namespace KursovaWPF.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для FunctionsPage.xaml
+    /// Логика взаимодействия для OperatorsGuestPage.xaml
     /// </summary>
-    public partial class FunctionsPage : Page
+    public partial class OperatorsGuestPage : Page
     {
-        public FunctionsPage()
+        public OperatorsGuestPage()
         {
             InitializeComponent();
         }
-
         private void Page_Initialized(object sender, EventArgs e)
         {
-            //TableFunctions.ItemsSource = DataBase.SelectAllFunctions();
+            TableOperators.ItemsSource = DataBase.SelectAllOperators();
         }
     }
 }

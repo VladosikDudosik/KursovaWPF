@@ -66,7 +66,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Pages\ConstructionsGuestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ConstructionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DataTypesGuestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -74,7 +82,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\FunctionsGuestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\FunctionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\OperatorsGuestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -86,7 +102,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\GuessWindow.xaml">
+    <Page Include="Windows\GuestWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -104,14 +120,26 @@
     <Compile Include="Models\DataTypes.cs" />
     <Compile Include="Models\Functions.cs" />
     <Compile Include="Models\Operators.cs" />
+    <Compile Include="Pages\ConstructionsGuestPage.xaml.cs">
+      <DependentUpon>ConstructionsGuestPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ConstructionsPage.xaml.cs">
       <DependentUpon>ConstructionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DataTypesGuestPage.xaml.cs">
+      <DependentUpon>DataTypesGuestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\DataTypesPage.xaml.cs">
       <DependentUpon>DataTypesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FunctionsGuestPage.xaml.cs">
+      <DependentUpon>FunctionsGuestPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FunctionsPage.xaml.cs">
       <DependentUpon>FunctionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OperatorsGuestPage.xaml.cs">
+      <DependentUpon>OperatorsGuestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\OperatorsPage.xaml.cs">
       <DependentUpon>OperatorsPage.xaml</DependentUpon>
@@ -119,8 +147,8 @@
     <Compile Include="Windows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\GuessWindow.xaml.cs">
-      <DependentUpon>GuessWindow.xaml</DependentUpon>
+    <Compile Include="Windows\GuestWindow.xaml.cs">
+      <DependentUpon>GuestWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>

@@ -27,7 +27,7 @@ namespace KursovaWPF.Pages
 
         private void Page_Initialized(object sender, EventArgs e)
         {
-            TableDataTypes.ItemsSource = DataBase.SelectAllDataTypes();
+            //TableDataTypes.ItemsSource = DataBase.SelectAllDataTypes();
         }
     }
 }

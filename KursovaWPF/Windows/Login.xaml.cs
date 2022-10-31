@@ -35,18 +35,19 @@ namespace KursovaWPF
             SqlDataReader data = DataBase.Select($"SELECT * FROM Users WHERE Login = '{Login}' and PasswordHash = '{Password}'");
             if(data.Read())
             {
-                var window = new GuessWindow();
-                window.Owner = this;
-                window.ShowDialog();
+                data.Close();
+                var window = new AdminWindow();
+                window.Show();
+                Close();
             }
         }
 
         private void ButtonGuest_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            
-            var window = new AdminWindow();
+            var window = new GuestWindow();
             window.Show();
             Close();
+            
         }
     }
 }

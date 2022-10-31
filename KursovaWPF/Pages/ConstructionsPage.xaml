@@ -23,13 +23,32 @@
                 <ColumnDefinition Width="4*"/>
                 <ColumnDefinition Width="1.5*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid FontSize="15" Grid.Column="0" x:Name="TableConstructions"/>
-            <StackPanel Grid.Column="1" Background="Bisque">
+            <DataGrid FontSize="15" Grid.Column="0" x:Name="TableConstructions"
+                      AutoGenerateColumns="False" CanUserAddRows="False"
+                      >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Path = 'Construction_id'}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Path = 'Name'}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Description" Binding="{Binding Path = 'Description'}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Example" Binding="{Binding Path = 'Example'}" IsReadOnly="True"/>
+                    <DataGridTemplateColumn Header="Actions">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="ButtonEdit" Click="ButtonEdit_Click" Content="Edit"/>
+                                    <Button x:Name="ButtonDelete" Click="ButtonDelete_Click" Content="Delete"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Column="1" Background="Azure">
                 <Label Content="Нова конструкція" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
-                <TextBox materialDesign:HintAssist.Hint="Назва" Margin="20"/>
-                <TextBox materialDesign:HintAssist.Hint="Опис" Margin="20" />
-                <TextBox materialDesign:HintAssist.Hint="Приклад" Margin="20" TextWrapping="Wrap"/>
-                <Button  Content="Додати" Margin="10" FontSize="20" Height="50"/>
+                <TextBox x:Name="TextBoxName" materialDesign:HintAssist.Hint="Назва" Margin="20"/>
+                <TextBox x:Name="TextBoxDesctiption" materialDesign:HintAssist.Hint="Опис" Margin="20" />
+                <TextBox x:Name="TextBoxExample" materialDesign:HintAssist.Hint="Приклад" Margin="20" TextWrapping="Wrap"/>
+                <Button  x:Name="ButtonInsert" Content="Додати" Margin="10" FontSize="20" Height="50" Click="ButtonInsert_Click"/>
             </StackPanel>
         </Grid>
        

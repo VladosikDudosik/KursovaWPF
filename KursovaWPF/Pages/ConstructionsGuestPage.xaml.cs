@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,26 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KursovaWPF.Helpers;
-namespace KursovaWPF.Windows
+namespace KursovaWPF.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для GuessWindow.xaml
+    /// Логика взаимодействия для ConstructionsGuessPage.xaml
     /// </summary>
-    public partial class GuessWindow : Window
+    public partial class ConstructionsGuestPage : Page
     {
-        public GuessWindow()
+        public ConstructionsGuestPage()
         {
             InitializeComponent();
         }
 
-        private void Window_Initialized(object sender, EventArgs e)
+        private void Page_Initialized(object sender, EventArgs e)
         {
-            TableDataTypes.ItemsSource = DataBase.SelectAllDataTypes();
-            TableFunctions.ItemsSource = DataBase.SelectAllFunctions();
             TableConstructions.ItemsSource = DataBase.SelectAllConstructions();
-            TableOperators.ItemsSource = DataBase.SelectAllOperators();
         }
     }
 }

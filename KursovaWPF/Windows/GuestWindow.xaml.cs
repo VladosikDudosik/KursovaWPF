@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,31 +12,38 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using KursovaWPF.Helpers;
 using KursovaWPF.Pages;
 namespace KursovaWPF.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для AdminWindow.xaml
+    /// Логика взаимодействия для GuessWindow.xaml
     /// </summary>
-    public partial class AdminWindow : Window
+    public partial class GuestWindow : Window
     {
         Dictionary<Pages, Page> pages;
-        public AdminWindow()
+        public GuestWindow()
         {
             InitializeComponent();
             pages = new Dictionary<Pages, Page>
             {
-                {Pages.Constructions,new ConstructionsPage() },
-                {Pages.DataTypes, new DataTypesPage() },
-                {Pages.Functions,new FunctionsPage() },
-                {Pages.Operators,new OperatorsPage() }
+                {Pages.Constructions,new ConstructionsGuestPage() },
+                {Pages.DataTypes, new DataTypesGuestPage() },
+                {Pages.Functions,new FunctionsGuestPage() },
+                {Pages.Operators,new OperatorsGuestPage() }
             };
         }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+
+        }
+
         private void ButtonOperatorsPage_Click(object sender, RoutedEventArgs e)
         {
             PageFrame.Navigate(pages[Pages.Operators]);
         }
-        
+
         private void ButtonConstructionsPage_Click(object sender, RoutedEventArgs e)
         {
             PageFrame.Navigate(pages[Pages.Constructions]);
