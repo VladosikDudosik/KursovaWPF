@@ -27,26 +27,16 @@ namespace KursovaWPF.Windows
             InitializeComponent();
             pages = new Dictionary<Pages, Page>
             {
-                {Pages.Constructions,new ConstructionsGuestPage() },
                 {Pages.DataTypes, new DataTypesGuestPage() },
                 {Pages.Functions,new FunctionsGuestPage() },
                 {Pages.Operators,new OperatorsGuestPage() }
             };
         }
 
-        private void Window_Initialized(object sender, EventArgs e)
-        {
-
-        }
 
         private void ButtonOperatorsPage_Click(object sender, RoutedEventArgs e)
         {
             PageFrame.Navigate(pages[Pages.Operators]);
-        }
-
-        private void ButtonConstructionsPage_Click(object sender, RoutedEventArgs e)
-        {
-            PageFrame.Navigate(pages[Pages.Constructions]);
         }
 
         private void ButtonDataTypesPage_Click(object sender, RoutedEventArgs e)
@@ -58,9 +48,14 @@ namespace KursovaWPF.Windows
         {
             PageFrame.Navigate(pages[Pages.Functions]);
         }
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var window = new MainWindow();
+            window.Show();
+            Close();
+        }
         enum Pages
         {
-            Constructions,
             DataTypes,
             Functions,
             Operators

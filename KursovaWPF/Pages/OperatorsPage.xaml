@@ -3,12 +3,77 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign ="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:KursovaWPF.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="OperatorsPage" Initialized="Page_Initialized">
+      Title="OperatorsPage" Loaded="Page_Loaded">
 
     <Grid Background="White">
-        <DataGrid x:Name="TableOperators"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="Gray">
+            <Label Content="Оператори" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+        </Grid>
+        
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="1.5*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid FontSize="15" Grid.Column="0" x:Name="TableOperators"
+                      AutoGenerateColumns="False" CanUserAddRows="False"
+                      >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Ід" Binding="{Binding Path = 'Operator_id'}" IsReadOnly="True" Visibility="Hidden"/>
+                    <DataGridTextColumn Header="Оператор" Binding="{Binding Path = 'Operator'}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Назва" Binding="{Binding Path = 'Operator_name'}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Тип" Binding="{Binding Path = 'Type'}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Приклад" Binding="{Binding Path = 'Example'}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Опис" Binding="{Binding Path = 'Description'}" IsReadOnly="True"/>
+                    <DataGridTemplateColumn Header="Actions">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="ButtonEdit" Click="ButtonEdit_Click" Content="Edit"/>
+                                    <Button x:Name="ButtonDelete" Click="ButtonDelete_Click" Content="Delete"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Column="1"  x:Name="InsertForm">
+                <Label Content="Новий оператор" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                <TextBox x:Name="TextBoxOperator" materialDesign:HintAssist.Hint="Оператор" Margin="20"/>
+                <TextBox x:Name="TextBoxName" materialDesign:HintAssist.Hint="Назва" Margin="20"/>
+                <ComboBox x:Name="ComboBoxType" materialDesign:HintAssist.Hint="Тип" Margin="20"/>
+                <TextBox x:Name="TextBoxExample" materialDesign:HintAssist.Hint="Приклад" Margin="20" TextWrapping="Wrap"/>
+                <TextBox x:Name="TextBoxDesctiption" materialDesign:HintAssist.Hint="Опис" Margin="20" />
+                <Button  x:Name="ButtonInsert" Content="Додати" Margin="10" FontSize="20" Height="50" Click="ButtonInsert_Click"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" x:Name="UpdateForm" Visibility="Hidden">
+
+                <Label Content="Редагування" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                <TextBox x:Name="TextBoxUpdateOperator" materialDesign:HintAssist.Hint="Оператор" Margin="20"/>
+                <TextBox x:Name="TextBoxUpdateName" materialDesign:HintAssist.Hint="Назва" Margin="20"/>
+                <ComboBox x:Name="ComboBoxUpdateType" materialDesign:HintAssist.Hint="Тип" Margin="20"/>
+                <TextBox x:Name="TextBoxUpdateExample" materialDesign:HintAssist.Hint="Приклад" Margin="20" TextWrapping="Wrap"/>
+                <TextBox x:Name="TextBoxUpdateDesctiption" materialDesign:HintAssist.Hint="Опис" Margin="20" />
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" x:Name="ButtonCansel" Click="ButtonCansel_Click" Content="Скасувати" Margin="10" FontSize="20" Height="50" />
+                    <Button Grid.Column="1" x:Name="ButtonUpdate" Click="ButtonUpdate_Click" Content="Редагувати" Margin="10" FontSize="20" Height="50"  />
+                </Grid>
+
+            </StackPanel>
+
+        </Grid>
     </Grid>
 </Page>

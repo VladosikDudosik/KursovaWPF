@@ -22,23 +22,31 @@ namespace KursovaWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        string PasswordHash = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918";
+        string Login = "admin";
         public MainWindow()
         {
             DataBase.OpenConnection();
+            
             InitializeComponent();
         }
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
             string Login = TextBoxLogin.Text;
-            string Password = Methods.TextToSHA256(PasswordBox.Password);
-            SqlDataReader data = DataBase.Select($"SELECT * FROM Users WHERE Login = '{Login}' and PasswordHash = '{Password}'");
-            if(data.Read())
+            string PasswordHash = Methods.TextToSHA256(PasswordBox.Password);
+            //SqlDataReader data = DataBase.Select($"SELECT * FROM Users WHERE Login = '{Login}' and PasswordHash = '{Password}'");
+            if(Login == this.Login && PasswordHash == this.PasswordHash)
             {
-                data.Close();
                 var window = new AdminWindow();
                 window.Show();
                 Close();
+            }
+            else
+            {
+                MessageBox.Show("Неправильний логін або пароль!", "Помилка", MessageBoxButton.OK, MessageBoxImage.Error);
+                PasswordBox.Clear();
+                TextBoxLogin.Clear();
             }
         }
 

@@ -15,6 +15,5 @@
             <Button x:Name="ButtonLogin" Content="Увійти" Margin="0 20" Height="39" Cursor="Hand" Click="ButtonLogin_Click" />
             <Label Cursor="Hand" x:Name="ButtonGuest" Content="Увійти як гість" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" MouseLeftButtonDown="ButtonGuest_MouseLeftButtonDown"/>
         </StackPanel>
-
     </Grid>
 </Window>

@@ -19,7 +19,7 @@
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <Image Source="/Windows/Lisplogo.png" />
-                    <!--<Label Content="Таблиці" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
+                    <Image Source="/Windows/logout.png" Width="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="18,0,0,5" MouseDown="Image_MouseDown"/>
                 </Grid>
                 <StackPanel Orientation="Vertical" Grid.Row="1">
                     <Button x:Name="ButtonOperatorsPage"
@@ -28,12 +28,6 @@
                     Height="100"
                     FontSize="20"
                     Click="ButtonOperatorsPage_Click"/>
-                    <Button x:Name="ButtonConstructionsPage"
-                    Margin="20"
-                    Content="Конструкції"
-                    Height="100"
-                    FontSize="20"
-                    Click="ButtonConstructionsPage_Click"/>
                     <Button x:Name="ButtonDataTypesPage"
                     Margin="20"
                     Content="Типи даних"
@@ -46,8 +40,11 @@
                     Height="100"
                     FontSize="20"
                     Click="ButtonFunctionsPage_Click"/>
+
                 </StackPanel>
+
             </Grid>
+
         </Border>
         <Frame x:Name="PageFrame"  Grid.Column="1" NavigationUIVisibility="Hidden"/>
     </Grid>

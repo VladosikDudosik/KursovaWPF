@@ -9,7 +9,8 @@ namespace KursovaWPF.Helpers
 {
     public static class DataBase
     {
-        static string connectionString = @"Data Source=DESKTOP-SU7SNM7\SQLEXPRESS01;Initial Catalog=LispDB;Integrated Security=True";
+        //static string connectionString = @"Data Source=DESKTOP-SU7SNM7\SQLEXPRESS01;Initial Catalog=LispDB;Integrated Security=True";
+        static string connectionString = @"Data Source=DESKTOP-SU7SNM7\SQLEXPRESS01;Initial Catalog=KursovaDB;Integrated Security=True";
         static public SqlConnection Connection = new SqlConnection(connectionString);
         static public bool OpenConnection()
         {
@@ -80,9 +81,9 @@ namespace KursovaWPF.Helpers
         static public List<Operators> SelectAllOperators()
         {
             List<Operators> res = new List<Operators>();
-            SqlDataReader reader = Select("SELECT Operators.Operator_id,Operators.Name,Descriptions.Description,Examples.Example FROM Operators" +
-                " JOIN Descriptions ON Operators.Description_id = Descriptions.Description_id" +
-                " JOIN Examples ON Operators.Example_id = Examples.Example_id;");
+            SqlDataReader reader = Select("SELECT Operators.Operator_id,Operators.Operator,Operators.Operator_name,TypesOfOperators.Type,Examples.Example,Examples.Description FROM Operators" +
+                " JOIN Examples ON Operators.Example_id = Examples.Example_id" +
+                " JOIN TypesOfOperators ON Operators.Example_id = TypesOfOperators.Type_id");
             while (reader.Read())
             {
                 Operators op = new Operators();
@@ -95,7 +96,7 @@ namespace KursovaWPF.Helpers
             reader.Close();
             return res;
         }
-        static public List<Constructions> SelectAllConstructions()
+        /*static public List<Constructions> SelectAllConstructions()
         {
             List<Constructions> res = new List<Constructions>();
             SqlDataReader reader = Select("SELECT Constructions.Construction_id,Constructions.Name,Descriptions.Description,Examples.Example FROM Constructions " +
@@ -112,6 +113,6 @@ namespace KursovaWPF.Helpers
             }
             reader.Close();
             return res;
-        }
+        }*/
     }
 }

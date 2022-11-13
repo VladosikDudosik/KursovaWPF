@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using KursovaWPF.Pages;
+using KursovaWPF.Windows;
 namespace KursovaWPF.Windows
 {
     /// <summary>
@@ -25,7 +26,6 @@ namespace KursovaWPF.Windows
             InitializeComponent();
             pages = new Dictionary<Pages, Page>
             {
-                {Pages.Constructions,new ConstructionsPage() },
                 {Pages.DataTypes, new DataTypesPage() },
                 {Pages.Functions,new FunctionsPage() },
                 {Pages.Operators,new OperatorsPage() }
@@ -34,11 +34,6 @@ namespace KursovaWPF.Windows
         private void ButtonOperatorsPage_Click(object sender, RoutedEventArgs e)
         {
             PageFrame.Navigate(pages[Pages.Operators]);
-        }
-        
-        private void ButtonConstructionsPage_Click(object sender, RoutedEventArgs e)
-        {
-            PageFrame.Navigate(pages[Pages.Constructions]);
         }
 
         private void ButtonDataTypesPage_Click(object sender, RoutedEventArgs e)
@@ -56,6 +51,13 @@ namespace KursovaWPF.Windows
             DataTypes,
             Functions,
             Operators
+        }
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var window = new MainWindow();
+            window.Show();
+            Close();
         }
     }
 }
