@@ -1,4 +1,4 @@
 # Курсова робота з дисципліни Організація баз даних
 ## Базові оператори та конструкції мови програмування Lisp
 
-![](https://i.ibb.co/GpNvhwD/Screenshot-1.png)
+![Діаграма бази даних](https://i.ibb.co/GpNvhwD/Screenshot-1.png)
