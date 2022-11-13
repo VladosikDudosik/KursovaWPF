@@ -14,7 +14,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="Gray">
+        <Grid Grid.Row="0" Background="Black">
             <Label Content="Типи даних" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
         </Grid>
 
@@ -44,7 +44,16 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
+            <Border BorderBrush="Black" BorderThickness="0,0,3,0"/>
             <StackPanel Grid.Column="1"  x:Name="InsertForm">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Image Margin="0 20 0 0" Source="/Pages/Refresh.png" Width="20"  Cursor="Hand" x:Name="ImageRefresh" MouseDown="ImageRefresh_MouseDown" />
+                        <Label Content="Пошук" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                    </StackPanel>
+                    <TextBox x:Name="TextBoxSearch" materialDesign:HintAssist.Hint="Тип даних" Margin="20"/>
+                    <Button x:Name="ButtonSearch" Click="ButtonSearch_Click" Margin="20" Content="Найти"/>
+                </StackPanel>
                 <Label Content="Новий тип даних" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
                 <TextBox x:Name="TextBoxDataType" materialDesign:HintAssist.Hint="Тип даних" Margin="20"/>
                 <TextBox x:Name="TextBoxExample" materialDesign:HintAssist.Hint="Приклад" Margin="20" TextWrapping="Wrap"/>

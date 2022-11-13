@@ -16,12 +16,9 @@ namespace KursovaWPF.Pages
         {
             InitializeComponent();
         }
-
-        private void Page_Initialized(object sender, EventArgs e)
-        {
-            LoadTable();
-        }
-
+        //--------------------------------------------------|
+        //Основні операції (Вставка, редагування, видалення)|
+        //--------------------------------------------------|
         private void ButtonInsert_Click(object sender, RoutedEventArgs e)
         {
             string DataType = TextBoxDataType.Text;
@@ -51,7 +48,6 @@ namespace KursovaWPF.Pages
             TextBoxExample.Clear();
             LoadTable();
         }
-
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -79,7 +75,6 @@ namespace KursovaWPF.Pages
                 MessageBox.Show("Виникла помилка!", "Помилка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void ButtonUpdate_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -98,7 +93,30 @@ namespace KursovaWPF.Pages
             UpdateForm.Visibility = Visibility.Hidden;
             LoadTable();
         }
-        //---------------------
+        private void ButtonSearch_Click(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxSearch.Text == "")
+            {
+                MessageBox.Show("Введіть тип даних", "Незаповнене поле", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            SqlConnection connection = DataBase.Connection;
+            SqlCommand com = new SqlCommand("SELECT DataTypes.DataType_id,DataTypes.DataType,Examples.Example,Examples.Description FROM DataTypes" +
+               $" JOIN Examples ON DataTypes.Example_id = Examples.Example_id WHERE DataTypes.DataType LIKE ('%{TextBoxSearch.Text}%')", connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(com);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            com.Dispose();
+            adapter.Dispose();
+            TableDataTypes.ItemsSource = dt.DefaultView;
+        }
+        //--------------------------------------------------|
+        //Події для різних кнопок та вікон.                 |
+        //--------------------------------------------------|
+        private void Page_Initialized(object sender, EventArgs e)
+        {
+            LoadTable();
+        }
         private void ButtonCansel_Click(object sender, RoutedEventArgs e)
         {
             InsertForm.Visibility = Visibility.Visible;
@@ -114,7 +132,13 @@ namespace KursovaWPF.Pages
             TextBoxUpdateExample.Text = dataRowView[2].ToString();
             TextBoxUpdateDesctiption.Text = dataRowView[3].ToString();
         }
-        //---------------------
+        private void ImageRefresh_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            LoadTable();
+        }
+        //--------------------------------------------------|
+        //Додаткові методи                                  |
+        //--------------------------------------------------|
         void LoadTable()
         {
             SqlConnection connection = DataBase.Connection;

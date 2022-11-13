@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using KursovaWPF.Helpers;
@@ -13,19 +14,14 @@ namespace KursovaWPF.Pages
     public partial class OperatorsPage : Page
     {
         string EditId;
-        List<string> operatorsTypes = new List<string>();
         public OperatorsPage()
         {
             InitializeComponent();
         }
-        
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            LoadTable();
-            FillComboBoxOperatorsTypes(ComboBoxType);
-        }
-        //-------------------------
-        //Основні операції (Вставка, редагування, видалення)
+
+        //--------------------------------------------------|
+        //Основні операції (Вставка, редагування, видалення)|
+        //--------------------------------------------------|
         private void ButtonUpdate_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -57,9 +53,9 @@ namespace KursovaWPF.Pages
                 try
                 {
                     SqlConnection connection = DataBase.Connection;
-                    SqlCommand command = new SqlCommand($"INSERT INTO Examples (Example,Description) VALUES ('{Description}','{Example}')", connection);
+                    SqlCommand command = new SqlCommand($"INSERT INTO Examples (Example,Description) VALUES ('{Example}','{Description}')", connection);
                     command.ExecuteNonQuery();
-                    command.CommandText = $"INSERT INTO Operators (Operator,Operator_name,Type_id,Example_id) VALUES ('{Name}','{Operator}',{TypeId},(SELECT max(Example_id) FROM Examples))";
+                    command.CommandText = $"INSERT INTO Operators (Operator,Operator_name,Type_id,Example_id) VALUES ('{Operator}','{Name}',{TypeId},(SELECT max(Example_id) FROM Examples))";
                     command.ExecuteNonQuery();
                 }
                 catch
@@ -105,8 +101,51 @@ namespace KursovaWPF.Pages
                 MessageBox.Show("Виникла помилка!", "Помилка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        //-------------------------
-        //Методи для відкриття вікон і тп.
+        private void ButtonSearch_Click(object sender, RoutedEventArgs e)
+        {
+            if (ComboBoxSearch.SelectedIndex< 2 && TextBoxSearch.Text == "")
+            {
+                MessageBox.Show("Заповніть поле пошуку", "Незаповнене поле", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }else if (ComboBoxSearch.SelectedIndex == 2 && ComboBoxSearchOperators.SelectedIndex == -1)
+            {
+                MessageBox.Show("Оберіть тип", "Незаповнене поле", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            } 
+            SqlConnection connection = DataBase.Connection;
+            SqlCommand com;
+            switch (ComboBoxSearch.SelectedIndex)
+            {
+                case 0:
+                    com = new SqlCommand("SELECT Operators.Operator_id,Operators.Operator,Operators.Operator_name,TypesOfOperators.Type,Examples.Example,Examples.Description FROM Operators" +
+                           " JOIN Examples ON Operators.Example_id = Examples.Example_id" +
+                           $" JOIN TypesOfOperators ON Operators.Type_id = TypesOfOperators.Type_id WHERE Operators.Operator LIKE ('%{TextBoxSearch.Text}%')", connection);
+                    break;
+                case 1:
+                    com = new SqlCommand("SELECT Operators.Operator_id,Operators.Operator,Operators.Operator_name,TypesOfOperators.Type,Examples.Example,Examples.Description FROM Operators" +
+                           " JOIN Examples ON Operators.Example_id = Examples.Example_id" +
+                           $" JOIN TypesOfOperators ON Operators.Type_id = TypesOfOperators.Type_id WHERE Operators.Operator_name LIKE ('%{TextBoxSearch.Text}%')", connection);
+                    break;
+                case 2:
+                    com = new SqlCommand("SELECT Operators.Operator_id,Operators.Operator,Operators.Operator_name,TypesOfOperators.Type,Examples.Example,Examples.Description FROM Operators" +
+                           " JOIN Examples ON Operators.Example_id = Examples.Example_id" +
+                           $" JOIN TypesOfOperators ON Operators.Type_id = TypesOfOperators.Type_id WHERE TypesOfOperators.Type LIKE ('%{ComboBoxSearchOperators.SelectedItem.ToString()}%')", connection);
+                    break;
+                default:
+                    MessageBox.Show("Помилка пошуку.", "Помилка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+            }
+            SqlDataAdapter adapter = new SqlDataAdapter(com);
+            DataTable dt = new DataTable();
+
+            adapter.Fill(dt);
+            com.Dispose();
+            adapter.Dispose();
+            TableOperators.ItemsSource = dt.DefaultView;
+        }
+        //--------------------------------------------------|
+        //Події для різних кнопок та вікон.                 |
+        //--------------------------------------------------|
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             
@@ -129,10 +168,35 @@ namespace KursovaWPF.Pages
             InsertForm.Visibility = Visibility.Visible;
             UpdateForm.Visibility = Visibility.Hidden;
         }
-        //-------------------------
-        //Додаткові методи
+        private void ImageRefresh_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            LoadTable();
+        }
+        private void ComboBoxSearch_DropDownClosed(object sender, EventArgs e)
+        {
+            if (ComboBoxSearch.SelectedIndex == 2)
+            {
+                FillComboBoxOperatorsTypes(ComboBoxSearchOperators);
+                ComboBoxSearchOperators.Visibility = Visibility.Visible;
+                TextBoxSearch.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                ComboBoxSearchOperators.Visibility = Visibility.Hidden;
+                TextBoxSearch.Visibility = Visibility.Visible;
+            }
+        }
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadTable();
+            FillComboBoxOperatorsTypes(ComboBoxType);
+        }
+        //--------------------------------------------------|
+        //Додаткові методи                                  |
+        //--------------------------------------------------|
         void FillComboBoxOperatorsTypes(ComboBox box)
         {
+            box.Items.Clear();
             SqlConnection connection = DataBase.Connection;
             SqlCommand com = new SqlCommand("SELECT Type FROM TypesOfOperators", connection);
             SqlDataReader read = com.ExecuteReader();
@@ -140,6 +204,7 @@ namespace KursovaWPF.Pages
             {
                 box.Items.Add(read[0].ToString());
             }
+            read.Close();
         }
         void LoadTable()
         {
@@ -155,5 +220,6 @@ namespace KursovaWPF.Pages
             adapter.Dispose();
             TableOperators.ItemsSource = dt.DefaultView;
         }
+        //--------------------------------------------------
     }
 }
