@@ -106,12 +106,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helpers\Methods.cs" />
     <Compile Include="Helpers\DataBase.cs" />
-    <Compile Include="Models\Constructions.cs" />
-    <Compile Include="Models\DataTypes.cs" />
-    <Compile Include="Models\Functions.cs" />
-    <Compile Include="Models\Operators.cs" />
     <Compile Include="Pages\DataTypesGuestPage.xaml.cs">
       <DependentUpon>DataTypesGuestPage.xaml</DependentUpon>
     </Compile>

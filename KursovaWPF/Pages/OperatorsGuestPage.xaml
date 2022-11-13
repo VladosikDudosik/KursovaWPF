@@ -16,6 +16,6 @@
         <Grid Grid.Row="0" Background="Gray">
             <Label Content="Оператори" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
         </Grid>
-        <DataGrid FontSize="15" Grid.Row="1" x:Name="TableOperators" CanUserAddRows="False"/>
+        <DataGrid FontSize="15" Grid.Row="1" x:Name="TableOperators" CanUserAddRows="False" IsReadOnly="True"/>
     </Grid>
 </Page>

@@ -1,25 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using KursovaWPF.Helpers;
 using KursovaWPF.Windows;
 namespace KursovaWPF
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         string PasswordHash = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918";
@@ -34,8 +21,7 @@ namespace KursovaWPF
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
             string Login = TextBoxLogin.Text;
-            string PasswordHash = Methods.TextToSHA256(PasswordBox.Password);
-            //SqlDataReader data = DataBase.Select($"SELECT * FROM Users WHERE Login = '{Login}' and PasswordHash = '{Password}'");
+            string PasswordHash = TextToSHA256(PasswordBox.Password);
             if(Login == this.Login && PasswordHash == this.PasswordHash)
             {
                 var window = new AdminWindow();
@@ -56,6 +42,16 @@ namespace KursovaWPF
             window.Show();
             Close();
             
+        }
+        public static string TextToSHA256(string text)
+        {
+            StringBuilder res = new StringBuilder();
+            byte[] bytes = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(text));
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                res.Append(bytes[i].ToString("x2"));
+            }
+            return res.ToString();
         }
     }
 }

@@ -34,12 +34,12 @@
                     <DataGridTextColumn Header="Тип" Binding="{Binding Path = 'Type'}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Приклад" Binding="{Binding Path = 'Example'}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Опис" Binding="{Binding Path = 'Description'}" IsReadOnly="True"/>
-                    <DataGridTemplateColumn Header="Actions">
+                    <DataGridTemplateColumn Header="Дії">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button x:Name="ButtonEdit" Click="ButtonEdit_Click" Content="Edit"/>
-                                    <Button x:Name="ButtonDelete" Click="ButtonDelete_Click" Content="Delete"/>
+                                    <Button x:Name="ButtonEdit" Click="ButtonEdit_Click" Content="Редагувати"/>
+                                    <Button x:Name="ButtonDelete" Click="ButtonDelete_Click" Content="Видалити"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

@@ -2,19 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using KursovaWPF.Helpers;
 namespace KursovaWPF.Pages
 {
@@ -95,12 +84,19 @@ namespace KursovaWPF.Pages
             {
                 DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
                 SqlConnection connection = DataBase.Connection;
-                int id = Convert.ToInt32(dataRowView[0].ToString());
+                int Operator_id = Convert.ToInt32(dataRowView[0].ToString());
+                int Example_id = 0;
+                SqlCommand command = new SqlCommand($"SELECT Example_id FROM Operators WHERE Operator_id = {Operator_id}", connection);
 
-                SqlCommand command = new SqlCommand($"DELETE FROM Operators WHERE Operator_id = {id}", connection);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                    Example_id = reader.GetInt32(0);
+                reader.Close();
+
+                command.CommandText =  $"DELETE FROM Operators WHERE Operator_id = {Operator_id}";
                 command.ExecuteNonQuery();
                 command.CommandText = $"DELETE FROM Examples " +
-                    $"WHERE Example_id = (SELECT Example_id FROM Operators WHERE Operator_id = {id})";
+                    $"WHERE Example_id = {Example_id}";
                 command.ExecuteNonQuery();
                 LoadTable();
             }

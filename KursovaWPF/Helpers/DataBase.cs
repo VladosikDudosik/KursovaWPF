@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using KursovaWPF.Models;
+﻿using System.Data.SqlClient;
 namespace KursovaWPF.Helpers
 {
     public static class DataBase
@@ -44,7 +38,7 @@ namespace KursovaWPF.Helpers
             //CloseConnection();
             return res;
         }
-        static public List<DataTypes> SelectAllDataTypes()
+        /*static public List<DataTypes> SelectAllDataTypes()
         {
             List<DataTypes> res = new List<DataTypes>();
             SqlDataReader reader = Select("SELECT DataTypes.DataType_id,DataTypes.Name,Examples.Example FROM DataTypes " +

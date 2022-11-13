@@ -6,9 +6,68 @@
       xmlns:local="clr-namespace:KursovaWPF.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:materialDesign ="http://materialdesigninxaml.net/winfx/xaml/themes"
       Title="FunctionsPage" Initialized="Page_Initialized">
 
     <Grid Background="White">
-        <DataGrid x:Name="TableFunctions"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="Gray">
+            <Label Content="Функції" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+        </Grid>
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="1.5*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid FontSize="15" Grid.Column="0" x:Name="TableFunctions"
+                      AutoGenerateColumns="False" CanUserAddRows="False"
+                      >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Ід" Binding="{Binding Path = 'Function_id'}" IsReadOnly="True" Visibility="Hidden"/>
+                    <DataGridTextColumn Header="Функція" Binding="{Binding Path = 'Function'}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Приклад" Binding="{Binding Path = 'Example'}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Опис" Binding="{Binding Path = 'Description'}" IsReadOnly="True"/>
+                    <DataGridTemplateColumn Header="Дії">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="ButtonEdit" Click="ButtonEdit_Click" Content="Редагувати"/>
+                                    <Button x:Name="ButtonDelete" Click="ButtonDelete_Click" Content="Видалити"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Column="1"  x:Name="InsertForm">
+                <Label Content="Нова функція" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                <TextBox x:Name="TextBoxFunction" materialDesign:HintAssist.Hint="Функція" Margin="20"/>
+                <TextBox x:Name="TextBoxExample" materialDesign:HintAssist.Hint="Приклад" Margin="20" TextWrapping="Wrap"/>
+                <TextBox x:Name="TextBoxDesctiption" materialDesign:HintAssist.Hint="Опис" Margin="20" />
+                <Button  x:Name="ButtonInsert" Content="Додати" Margin="10" FontSize="20" Height="50" Click="ButtonInsert_Click"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" x:Name="UpdateForm" Visibility="Hidden">
+
+                <Label Content="Редагування" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                <TextBox x:Name="TextBoxUpdateFunction" materialDesign:HintAssist.Hint="Функція" Margin="20"/>
+                <TextBox x:Name="TextBoxUpdateExample" materialDesign:HintAssist.Hint="Приклад" Margin="20" TextWrapping="Wrap"/>
+                <TextBox x:Name="TextBoxUpdateDesctiption" materialDesign:HintAssist.Hint="Опис" Margin="20" />
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" x:Name="ButtonCansel" Click="ButtonCansel_Click" Content="Скасувати" Margin="10" FontSize="20" Height="50" />
+                    <Button Grid.Column="1" x:Name="ButtonUpdate" Click="ButtonUpdate_Click" Content="Редагувати" Margin="10" FontSize="20" Height="50"  />
+                </Grid>
+
+            </StackPanel>
+
+        </Grid>
     </Grid>
 </Page>
