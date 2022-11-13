@@ -1,2 +1,2 @@
 # Курсова робота з дисципліни Організація баз даних
-![](https://ibb.co/4t3ZQyL)
+![](https://i.ibb.co/GpNvhwD/Screenshot-1.png)
