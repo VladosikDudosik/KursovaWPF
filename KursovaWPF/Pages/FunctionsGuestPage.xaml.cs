@@ -6,9 +6,6 @@ using System.Windows.Controls;
 using KursovaWPF.Helpers;
 namespace KursovaWPF.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для FunctionsGuestPage.xaml
-    /// </summary>
     public partial class FunctionsGuestPage : Page
     {
         public FunctionsGuestPage()

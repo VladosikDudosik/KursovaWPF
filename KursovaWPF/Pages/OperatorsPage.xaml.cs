@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using KursovaWPF.Helpers;
 namespace KursovaWPF.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для OperatorsPage.xaml
-    /// </summary>
     public partial class OperatorsPage : Page
     {
         string EditId;

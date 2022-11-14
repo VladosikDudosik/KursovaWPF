@@ -22,7 +22,7 @@
                 <ColumnDefinition Width="4*"/>
                 <ColumnDefinition Width="1.5*"/>
             </Grid.ColumnDefinitions>
-            
+
             <DataGrid Grid.Column="0" FontSize="15" x:Name="TableOperators" CanUserAddRows="False" IsReadOnly="True"/>
 
             <Border BorderBrush="Black" BorderThickness="0,0,3,0"/>
@@ -44,6 +44,6 @@
             </StackPanel>
 
         </Grid>
-        
+
     </Grid>
 </Page>

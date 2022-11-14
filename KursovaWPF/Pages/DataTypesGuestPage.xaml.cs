@@ -6,9 +6,6 @@ using System.Windows.Controls;
 using KursovaWPF.Helpers;
 namespace KursovaWPF.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для DataTypesGuestPage.xaml
-    /// </summary>
     public partial class DataTypesGuestPage : Page
     {
         public DataTypesGuestPage()

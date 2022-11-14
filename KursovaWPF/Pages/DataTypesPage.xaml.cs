@@ -6,9 +6,6 @@ using System.Windows.Controls;
 using KursovaWPF.Helpers;
 namespace KursovaWPF.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для DataTypesPage.xaml
-    /// </summary>
     public partial class DataTypesPage : Page
     {
         string EditId = "";

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using KursovaWPF.Helpers;
@@ -157,7 +156,5 @@ namespace KursovaWPF.Pages
             adapter.Dispose();
             TableFunctions.ItemsSource = dt.DefaultView;
         }
-
-        
     }
 }

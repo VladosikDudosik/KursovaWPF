@@ -45,34 +45,4 @@
         </Border>
         <Frame x:Name="PageFrame"  Grid.Column="1" NavigationUIVisibility="Hidden"/>
     </Grid>
-    <!--<Grid Background="#FF505050">
-        
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Grid.Row="0">
-            <Label Content="Таблиця функцій" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White"/>
-            <DataGrid x:Name="TableFunctions" Margin="10 40 10 0"/>
-        </Grid>
-        <Grid  Grid.Column="0" Grid.Row="1" >
-            <Label Content="Таблиця операторів" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White"/>
-            <DataGrid x:Name="TableOperators" Margin="10 40 10 0"/>
-        </Grid>
-
-        <Grid Grid.Column="1" Grid.Row="0" >
-            <Label Content="Таблиця типів даних" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White"/>
-            <DataGrid x:Name="TableDataTypes" Margin="10 40 10 0"/>
-        </Grid>
-        <Grid  Grid.Column="1" Grid.Row="1">
-            <Label Content="Таблиця конструкцій" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White"/>
-            <DataGrid x:Name="TableConstructions"  Margin="10 40 10 0"/>
-        </Grid>
-        
-
-    </Grid>-->
 </Window>

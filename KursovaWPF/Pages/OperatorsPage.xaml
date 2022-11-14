@@ -17,7 +17,7 @@
         <Grid Grid.Row="0" Background="Black">
             <Label Content="Оператори" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
         </Grid>
-        
+
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -48,10 +48,10 @@
             </DataGrid>
             <Border BorderBrush="Black" BorderThickness="0,0,3,0"/>
             <StackPanel Grid.Column="1"  x:Name="InsertForm">
-                
+
                 <StackPanel>
                     <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
-                        
+
                         <Image Source="/Pages/Refresh.png" Width="20"  Cursor="Hand" x:Name="ImageRefresh" MouseDown="ImageRefresh_MouseDown" />
                         <Label Content="Пошук по" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
                         <ComboBox Margin="0 20 0 20" FontSize="20" FontWeight="Bold" SelectedIndex="0" x:Name="ComboBoxSearch" DropDownClosed="ComboBoxSearch_DropDownClosed">
@@ -66,7 +66,7 @@
                     </Grid>
                     <Button x:Name="ButtonSearch" Click="ButtonSearch_Click" Margin="20" Content="Найти" FontSize="20" Height="50"/>
                 </StackPanel>
-                
+
                 <Label Content="Новий оператор" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
                 <TextBox x:Name="TextBoxOperator" materialDesign:HintAssist.Hint="Оператор" Margin="20"/>
                 <TextBox x:Name="TextBoxName" materialDesign:HintAssist.Hint="Назва" Margin="20"/>
@@ -74,7 +74,7 @@
                 <TextBox x:Name="TextBoxExample" materialDesign:HintAssist.Hint="Приклад" Margin="20" TextWrapping="Wrap"/>
                 <TextBox x:Name="TextBoxDesctiption" materialDesign:HintAssist.Hint="Опис" Margin="20" />
                 <Button  x:Name="ButtonInsert" Content="Додати" Margin="10" FontSize="20" Height="50" Click="ButtonInsert_Click"/>
-                
+
             </StackPanel>
             <StackPanel Grid.Column="1" x:Name="UpdateForm" Visibility="Hidden">
 
