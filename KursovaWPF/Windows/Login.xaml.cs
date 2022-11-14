@@ -17,7 +17,6 @@ namespace KursovaWPF
             
             InitializeComponent();
         }
-
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
             string Login = TextBoxLogin.Text;
@@ -35,7 +34,6 @@ namespace KursovaWPF
                 TextBoxLogin.Clear();
             }
         }
-
         private void ButtonGuest_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var window = new GuestWindow();

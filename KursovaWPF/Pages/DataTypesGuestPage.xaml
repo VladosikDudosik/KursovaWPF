@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign ="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:KursovaWPF.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -16,6 +17,24 @@
         <Grid Grid.Row="0" Background="Black">
             <Label Content="Типи даних" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
         </Grid>
-        <DataGrid FontSize="15" Grid.Row="1" x:Name="TableDataTypes" CanUserAddRows="False"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="1.5*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid FontSize="15" Grid.Column="0" x:Name="TableDataTypes" CanUserAddRows="False"/>
+            <Border BorderBrush="Black" BorderThickness="0,0,3,0"/>
+            <StackPanel Grid.Column="1"  x:Name="InsertForm">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Image Margin="0 20 0 0" Source="/Pages/Refresh.png" Width="20"  Cursor="Hand" x:Name="ImageRefresh" MouseDown="ImageRefresh_MouseDown" />
+                        <Label Content="Пошук" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                    </StackPanel>
+                    <TextBox x:Name="TextBoxSearch" materialDesign:HintAssist.Hint="Тип даних" Margin="20"/>
+                    <Button x:Name="ButtonSearch" Click="ButtonSearch_Click" Margin="20" Content="Найти"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

@@ -134,6 +134,7 @@ namespace KursovaWPF.Pages
         }
         private void ImageRefresh_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            TextBoxSearch.Clear();
             LoadTable();
         }
         //--------------------------------------------------|

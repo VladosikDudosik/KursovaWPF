@@ -21,18 +21,14 @@ namespace KursovaWPF.Windows
                 {Pages.Operators,new OperatorsGuestPage() }
             };
         }
-
-
         private void ButtonOperatorsPage_Click(object sender, RoutedEventArgs e)
         {
             PageFrame.Navigate(pages[Pages.Operators]);
         }
-
         private void ButtonDataTypesPage_Click(object sender, RoutedEventArgs e)
         {
             PageFrame.Navigate(pages[Pages.DataTypes]);
         }
-
         private void ButtonFunctionsPage_Click(object sender, RoutedEventArgs e)
         {
             PageFrame.Navigate(pages[Pages.Functions]);

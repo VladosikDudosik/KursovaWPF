@@ -17,11 +17,6 @@ namespace KursovaWPF.Pages
         {
             InitializeComponent();
         }
-
-        private void Page_Initialized(object sender, EventArgs e)
-        {
-            LoadTable();
-        }
         //--------------------------------------------------|
         //Основні операції (Вставка, редагування, видалення)|
         //--------------------------------------------------|
@@ -137,8 +132,13 @@ namespace KursovaWPF.Pages
             TextBoxUpdateExample.Text = dataRowView[2].ToString();
             TextBoxUpdateDesctiption.Text = dataRowView[3].ToString();
         }
+        private void Page_Initialized(object sender, EventArgs e)
+        {
+            LoadTable();
+        }
         private void ImageRefresh_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            TextBoxSearch.Clear();
             LoadTable();
         }
         //--------------------------------------------------|

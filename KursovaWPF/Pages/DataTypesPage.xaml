@@ -25,8 +25,7 @@
                 <ColumnDefinition Width="1.5*"/>
             </Grid.ColumnDefinitions>
             <DataGrid FontSize="15" Grid.Column="0" x:Name="TableDataTypes"
-                      AutoGenerateColumns="False" CanUserAddRows="False"
-                      >
+                      AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Ід" Binding="{Binding Path = 'DataType_id'}" IsReadOnly="True" Visibility="Hidden"/>
                     <DataGridTextColumn Header="Тип даних" Binding="{Binding Path = 'DataType'}" IsReadOnly="True"/>

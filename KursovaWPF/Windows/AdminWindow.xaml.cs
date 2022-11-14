@@ -25,12 +25,10 @@ namespace KursovaWPF.Windows
         {
             PageFrame.Navigate(pages[Pages.Operators]);
         }
-
         private void ButtonDataTypesPage_Click(object sender, RoutedEventArgs e)
         {
             PageFrame.Navigate(pages[Pages.DataTypes]);
         }
-
         private void ButtonFunctionsPage_Click(object sender, RoutedEventArgs e)
         {
             PageFrame.Navigate(pages[Pages.Functions]);
@@ -42,7 +40,6 @@ namespace KursovaWPF.Windows
             Functions,
             Operators
         }
-
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             var window = new MainWindow();
