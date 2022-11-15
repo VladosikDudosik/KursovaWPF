@@ -15,7 +15,7 @@
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="Black">
-            <Label Content="Оператори" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+            <Label Content="Оператори" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#f1defc"/>
         </Grid>
 
 
@@ -46,14 +46,13 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <Border BorderBrush="Black" BorderThickness="0,0,3,0"/>
-            <StackPanel Grid.Column="1"  x:Name="InsertForm">
+            <StackPanel Grid.Column="1"  x:Name="InsertForm" Background="#f6e6ff">
 
                 <StackPanel>
                     <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
 
-                        <Image Source="/Pages/Refresh.png" Width="20"  Cursor="Hand" x:Name="ImageRefresh" MouseDown="ImageRefresh_MouseDown" />
-                        <Label Content="Пошук по" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                        <Image Source="/Pages/Refresh.png" Width="20"  Cursor="Hand" x:Name="ImageRefresh" MouseDown="ImageRefresh_MouseDown"/>
+                        <Label Content="Пошук по" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0" Foreground="Black"/>
                         <ComboBox Margin="0 20 0 20" FontSize="20" FontWeight="Bold" SelectedIndex="0" x:Name="ComboBoxSearch" DropDownClosed="ComboBoxSearch_DropDownClosed">
                             <ComboBoxItem Content="оператору"/>
                             <ComboBoxItem Content="назві"/>
@@ -67,7 +66,7 @@
                     <Button x:Name="ButtonSearch" Click="ButtonSearch_Click" Margin="20" Content="Найти" FontSize="20" Height="50"/>
                 </StackPanel>
 
-                <Label Content="Новий оператор" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                <Label Content="Новий оператор" Foreground="Black" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
                 <TextBox x:Name="TextBoxOperator" materialDesign:HintAssist.Hint="Оператор" Margin="20"/>
                 <TextBox x:Name="TextBoxName" materialDesign:HintAssist.Hint="Назва" Margin="20"/>
                 <ComboBox x:Name="ComboBoxType" materialDesign:HintAssist.Hint="Тип" Margin="20"/>
@@ -76,7 +75,7 @@
                 <Button  x:Name="ButtonInsert" Content="Додати" Margin="10" FontSize="20" Height="50" Click="ButtonInsert_Click"/>
 
             </StackPanel>
-            <StackPanel Grid.Column="1" x:Name="UpdateForm" Visibility="Hidden">
+            <StackPanel Grid.Column="1" x:Name="UpdateForm" Visibility="Hidden" Background="#f6e6ff">
 
                 <Label Content="Редагування" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
                 <TextBox x:Name="TextBoxUpdateOperator" materialDesign:HintAssist.Hint="Оператор" Margin="20"/>

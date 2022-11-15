@@ -25,8 +25,7 @@
 
             <DataGrid Grid.Column="0" FontSize="15" x:Name="TableOperators" CanUserAddRows="False" IsReadOnly="True"/>
 
-            <Border BorderBrush="Black" BorderThickness="0,0,3,0"/>
-            <StackPanel Grid.Column="1">
+            <StackPanel Grid.Column="1" Background="#f6e6ff">
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
                     <Image Source="/Pages/Refresh.png" Width="20"  Cursor="Hand" x:Name="ImageRefresh" MouseDown="ImageRefresh_MouseDown" />
                     <Label Content="Пошук по" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>

@@ -28,9 +28,8 @@
             </Grid.ColumnDefinitions>
             
             <DataGrid FontSize="15" Grid.Column="0" x:Name="TableFunctions" CanUserAddRows="False"/>
-            
-            <Border BorderBrush="Black" BorderThickness="0,0,3,0"/>
-            <StackPanel Grid.Column="1">
+
+            <StackPanel Grid.Column="1" Background="#f6e6ff">
                 <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
                     <Image Margin="0 20 0 0" Source="/Pages/Refresh.png" Width="20"  Cursor="Hand" x:Name="ImageRefresh" MouseDown="ImageRefresh_MouseDown" />
                     <Label Content="Пошук" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>

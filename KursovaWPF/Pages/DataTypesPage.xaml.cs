@@ -18,6 +18,7 @@ namespace KursovaWPF.Pages
         //--------------------------------------------------|
         private void ButtonInsert_Click(object sender, RoutedEventArgs e)
         {
+            SqlConnection connection = DataBase.Connection;
             string DataType = TextBoxDataType.Text;
             string Description = TextBoxDesctiption.Text;
             string Example = TextBoxExample.Text;
@@ -25,8 +26,15 @@ namespace KursovaWPF.Pages
             {
                 try
                 {
-                    SqlConnection connection = DataBase.Connection;
-                    SqlCommand command = new SqlCommand($"INSERT INTO Examples (Example,Description) VALUES ('{Example}','{Description}')", connection);
+                    SqlCommand command = new SqlCommand($"SELECT DataType FROM DataTypes WHERE DataType = '{DataType}'",connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        MessageBox.Show("Такий тип даних уже існує!", "Помилка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    reader.Close();
+                    command.CommandText = $"INSERT INTO Examples (Example,Description) VALUES ('{Example}','{Description}')";
                     command.ExecuteNonQuery();
                     command.CommandText = $"INSERT INTO DataTypes (DataType,Example_id) VALUES ('{DataType}',(SELECT max(Example_id) FROM Examples))";
                     command.ExecuteNonQuery();
@@ -47,6 +55,8 @@ namespace KursovaWPF.Pages
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
+            if (MessageBox.Show("Видалити цей запис?", "Підтвердження видалення", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+                return;
             try
             {
                 DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;

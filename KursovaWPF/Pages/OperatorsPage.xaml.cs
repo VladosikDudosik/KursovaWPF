@@ -38,6 +38,7 @@ namespace KursovaWPF.Pages
         }
         private void ButtonInsert_Click(object sender, RoutedEventArgs e)
         {
+            SqlConnection connection = DataBase.Connection;
             string Name = TextBoxName.Text;
             string Operator = TextBoxOperator.Text;
             string Description = TextBoxDesctiption.Text;
@@ -47,8 +48,15 @@ namespace KursovaWPF.Pages
             {
                 try
                 {
-                    SqlConnection connection = DataBase.Connection;
-                    SqlCommand command = new SqlCommand($"INSERT INTO Examples (Example,Description) VALUES ('{Example}','{Description}')", connection);
+                    SqlCommand command = new SqlCommand($"SELECT [Operator] FROM Operators WHERE [Operator] = '{Operator}'", connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        MessageBox.Show("Такий оператор уже існує!", "Помилка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    reader.Close();
+                    command.CommandText = $"INSERT INTO Examples (Example,Description) VALUES ('{Example}','{Description}')";
                     command.ExecuteNonQuery();
                     command.CommandText = $"INSERT INTO Operators (Operator,Operator_name,Type_id,Example_id) VALUES ('{Operator}','{Name}',{TypeId},(SELECT max(Example_id) FROM Examples))";
                     command.ExecuteNonQuery();
@@ -71,6 +79,8 @@ namespace KursovaWPF.Pages
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
+            if (MessageBox.Show("Видалити цей запис?","Підтвердження видалення",MessageBoxButton.YesNo,MessageBoxImage.Question) != MessageBoxResult.Yes)
+                return;
             try
             {
                 DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
