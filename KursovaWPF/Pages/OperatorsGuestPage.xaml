@@ -28,7 +28,7 @@
             <StackPanel Grid.Column="1" Background="#f6e6ff">
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
                     <Image Source="/Pages/Refresh.png" Width="20"  Cursor="Hand" x:Name="ImageRefresh" MouseDown="ImageRefresh_MouseDown" />
-                    <Label Content="Пошук по" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                    <Label Foreground="Black" Content="Пошук по" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
                     <ComboBox Margin="0 20 0 20" FontSize="20" FontWeight="Bold" SelectedIndex="0" x:Name="ComboBoxSearch" DropDownClosed="ComboBoxSearch_DropDownClosed">
                         <ComboBoxItem Content="оператору"/>
                         <ComboBoxItem Content="назві"/>
@@ -39,7 +39,7 @@
                     <TextBox x:Name="TextBoxSearch" materialDesign:HintAssist.Hint="" Margin="20"/>
                     <ComboBox  x:Name="ComboBoxSearchOperators" Visibility="Hidden" Margin="20"/>
                 </Grid>
-                <Button x:Name="ButtonSearch" Click="ButtonSearch_Click" Margin="20" Content="Найти" FontSize="20" Height="50"/>
+                <Button x:Name="ButtonSearch" Click="ButtonSearch_Click" Margin="20" Content="Шукати" FontSize="20" Height="50"/>
             </StackPanel>
 
         </Grid>

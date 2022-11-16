@@ -47,12 +47,12 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Image Margin="0 20 0 0" Source="/Pages/Refresh.png" Width="20"  Cursor="Hand" x:Name="ImageRefresh" MouseDown="ImageRefresh_MouseDown" />
-                        <Label Content="Пошук" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                        <Label Foreground="Black" Content="Пошук" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
                     </StackPanel>
                     <TextBox x:Name="TextBoxSearch" materialDesign:HintAssist.Hint="Тип даних" Margin="20"/>
-                    <Button x:Name="ButtonSearch" Click="ButtonSearch_Click" Margin="20" Content="Найти"/>
+                    <Button x:Name="ButtonSearch" Click="ButtonSearch_Click" Margin="20" Content="Шукати"/>
                 </StackPanel>
-                <Label Content="Новий тип даних" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                <Label Foreground="Black" Content="Новий тип даних" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
                 <TextBox x:Name="TextBoxDataType" materialDesign:HintAssist.Hint="Тип даних" Margin="20"/>
                 <TextBox x:Name="TextBoxExample" materialDesign:HintAssist.Hint="Приклад" Margin="20" TextWrapping="Wrap"/>
                 <TextBox x:Name="TextBoxDesctiption" materialDesign:HintAssist.Hint="Опис" Margin="20" />
@@ -60,7 +60,7 @@
             </StackPanel>
             <StackPanel Grid.Column="1" x:Name="UpdateForm" Visibility="Hidden" Background="#f6e6ff">
 
-                <Label Content="Редагування" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                <Label Foreground="Black" Content="Редагування" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
                 <TextBox x:Name="TextBoxUpdateDataType" materialDesign:HintAssist.Hint="Тип даних" Margin="20"/>
                 <TextBox x:Name="TextBoxUpdateExample" materialDesign:HintAssist.Hint="Приклад" Margin="20" TextWrapping="Wrap"/>
                 <TextBox x:Name="TextBoxUpdateDesctiption" materialDesign:HintAssist.Hint="Опис" Margin="20" />

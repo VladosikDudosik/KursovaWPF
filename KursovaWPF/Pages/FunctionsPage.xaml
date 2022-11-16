@@ -52,20 +52,20 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Image Margin="0 20 0 0" Source="/Pages/Refresh.png" Width="20"  Cursor="Hand" x:Name="ImageRefresh" MouseDown="ImageRefresh_MouseDown" />
-                        <Label Content="Пошук" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                        <Label Foreground="Black" Content="Пошук" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
                     </StackPanel>
 
                     <TextBox x:Name="TextBoxSearch" materialDesign:HintAssist.Hint="Назва функції" Margin="20"/>
-                    <Button x:Name="ButtonSearch" Click="ButtonSearch_Click" Margin="20" Content="Найти"/>
+                    <Button x:Name="ButtonSearch" Click="ButtonSearch_Click" Margin="20" Content="Шукати"/>
                 </StackPanel>
-                <Label Content="Нова функція" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                <Label Foreground="Black" Content="Нова функція" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
                 <TextBox x:Name="TextBoxFunction" materialDesign:HintAssist.Hint="Функція" Margin="20"/>
                 <TextBox x:Name="TextBoxExample" materialDesign:HintAssist.Hint="Приклад" Margin="20" TextWrapping="Wrap"/>
                 <TextBox x:Name="TextBoxDesctiption" materialDesign:HintAssist.Hint="Опис" Margin="20" />
                 <Button  x:Name="ButtonInsert" Content="Додати" Margin="10" FontSize="20" Height="50" Click="ButtonInsert_Click"/>
             </StackPanel>
             <StackPanel Grid.Column="1" x:Name="UpdateForm" Visibility="Hidden" Background="#f6e6ff">
-                <Label Content="Редагування" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                <Label Foreground="Black" Content="Редагування" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
                 <TextBox x:Name="TextBoxUpdateFunction" materialDesign:HintAssist.Hint="Функція" Margin="20"/>
                 <TextBox x:Name="TextBoxUpdateExample" materialDesign:HintAssist.Hint="Приклад" Margin="20" TextWrapping="Wrap"/>
                 <TextBox x:Name="TextBoxUpdateDesctiption" materialDesign:HintAssist.Hint="Опис" Margin="20" />

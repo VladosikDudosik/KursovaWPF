@@ -15,7 +15,7 @@
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="Black">
-            <Label Content="Оператори" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#f1defc"/>
+            <Label Content="Оператори" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
         </Grid>
 
 
@@ -63,7 +63,7 @@
                         <TextBox x:Name="TextBoxSearch" materialDesign:HintAssist.Hint="" Margin="20"/>
                         <ComboBox  x:Name="ComboBoxSearchOperators" Visibility="Hidden" Margin="20"/>
                     </Grid>
-                    <Button x:Name="ButtonSearch" Click="ButtonSearch_Click" Margin="20" Content="Найти" FontSize="20" Height="50"/>
+                    <Button x:Name="ButtonSearch" Click="ButtonSearch_Click" Margin="20" Content="Шукати" FontSize="20" Height="50"/>
                 </StackPanel>
 
                 <Label Content="Новий оператор" Foreground="Black" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0"/>
