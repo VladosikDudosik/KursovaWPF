@@ -8,8 +8,8 @@
 ![image](https://user-images.githubusercontent.com/91546193/201530472-ad12c0a6-b192-4c4d-a155-b6ee2a611486.png)
 
 ### Вигляд панелі адміна
-![image](https://i.ibb.co/JttTPN7/Screenshot-6.png)
+![image](https://i.ibb.co/G9bHNF3/Screenshot-10.png)
 
 ### Вигляд панелі користувача
-![image](https://i.ibb.co/Qfg656L/Screenshot-7.png)
+![image](https://i.ibb.co/bBV8M5Z/Screenshot-9.png)
 
