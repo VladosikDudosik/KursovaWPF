@@ -42,7 +42,7 @@ namespace KursovaWPF.Windows
         }
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var window = new MainWindow();
+            var window = new LoginWindow();
             window.Show();
             Close();
         }

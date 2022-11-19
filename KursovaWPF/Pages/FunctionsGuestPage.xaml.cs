@@ -8,6 +8,7 @@ namespace KursovaWPF.Pages
 {
     public partial class FunctionsGuestPage : Page
     {
+        SqlConnection connection = DataBase.GetConnection();
         public FunctionsGuestPage()
         {
             InitializeComponent();
@@ -18,7 +19,6 @@ namespace KursovaWPF.Pages
         }
         void LoadTable()
         {
-            SqlConnection connection = DataBase.Connection;
             SqlCommand com = new SqlCommand("SELECT Functions.[Function] as 'Функція',Examples.Example as 'Приклад',Examples.Description as 'Опис'FROM Functions" +
                 " JOIN Examples ON Functions.Example_id = Examples.Example_id", connection);
             SqlDataAdapter adapter = new SqlDataAdapter(com);
@@ -41,7 +41,6 @@ namespace KursovaWPF.Pages
                 MessageBox.Show("Введіть назву функції", "Незаповнене поле", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            SqlConnection connection = DataBase.Connection;
             SqlCommand com = new SqlCommand("SELECT Functions.[Function] as 'Функція',Examples.Example as 'Приклад',Examples.Description as 'Опис'FROM Functions" +
                $" JOIN Examples ON Functions.Example_id = Examples.Example_id WHERE Functions.[Function] LIKE ('%{TextBoxSearch.Text}%')", connection);
             SqlDataAdapter adapter = new SqlDataAdapter(com);

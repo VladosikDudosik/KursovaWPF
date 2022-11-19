@@ -7,11 +7,11 @@ using KursovaWPF.Helpers;
 using KursovaWPF.Windows;
 namespace KursovaWPF
 {
-    public partial class MainWindow : Window
+    public partial class LoginWindow : Window
     {
         string PasswordHash = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918";
         string Login = "admin";
-        public MainWindow()
+        public LoginWindow()
         {
             DataBase.OpenConnection();
             

@@ -8,6 +8,7 @@ namespace KursovaWPF.Pages
 {
     public partial class OperatorsPage : Page
     {
+        SqlConnection connection = DataBase.GetConnection();
         string EditId;
         public OperatorsPage()
         {
@@ -21,7 +22,6 @@ namespace KursovaWPF.Pages
         {
             try
             {
-                SqlConnection connection = DataBase.Connection;
                 SqlCommand command = new SqlCommand($"UPDATE Operators SET Operator = '{TextBoxUpdateOperator.Text}',Operator_name = '{TextBoxUpdateName.Text}', Type_id = {ComboBoxUpdateType.SelectedIndex + 1} WHERE Operator_id = {EditId}", connection);
                 command.ExecuteNonQuery();
                 command.CommandText = $"UPDATE Examples SET Example = '{TextBoxUpdateExample.Text}',Description = '{TextBoxUpdateDesctiption.Text}' WHERE Example_id = (SELECT Example_id FROM Operators WHERE Operator_id = {EditId})";
@@ -38,7 +38,6 @@ namespace KursovaWPF.Pages
         }
         private void ButtonInsert_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection connection = DataBase.Connection;
             string Name = TextBoxName.Text;
             string Operator = TextBoxOperator.Text;
             string Description = TextBoxDesctiption.Text;
@@ -84,7 +83,6 @@ namespace KursovaWPF.Pages
             try
             {
                 DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
-                SqlConnection connection = DataBase.Connection;
                 int Operator_id = Convert.ToInt32(dataRowView[0].ToString());
                 int Example_id = 0;
                 SqlCommand command = new SqlCommand($"SELECT Example_id FROM Operators WHERE Operator_id = {Operator_id}", connection);
@@ -117,7 +115,7 @@ namespace KursovaWPF.Pages
                 MessageBox.Show("Оберіть тип", "Незаповнене поле", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             } 
-            SqlConnection connection = DataBase.Connection;
+            
             SqlCommand com;
             switch (ComboBoxSearch.SelectedIndex)
             {
@@ -203,7 +201,6 @@ namespace KursovaWPF.Pages
         void FillComboBoxOperatorsTypes(ComboBox box)
         {
             box.Items.Clear();
-            SqlConnection connection = DataBase.Connection;
             SqlCommand com = new SqlCommand("SELECT Type FROM TypesOfOperators", connection);
             SqlDataReader read = com.ExecuteReader();
             while (read.Read())
@@ -214,7 +211,6 @@ namespace KursovaWPF.Pages
         }
         void LoadTable()
         {
-            SqlConnection connection = DataBase.Connection;
             SqlCommand com = new SqlCommand("SELECT Operators.Operator_id,Operators.Operator,Operators.Operator_name,TypesOfOperators.Type,Examples.Example,Examples.Description FROM Operators" +
                 " JOIN Examples ON Operators.Example_id = Examples.Example_id" +
                 " JOIN TypesOfOperators ON Operators.Type_id = TypesOfOperators.Type_id", connection);

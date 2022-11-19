@@ -11,6 +11,7 @@ namespace KursovaWPF.Pages
     /// </summary>
     public partial class FunctionsPage : Page
     {
+        SqlConnection connection = DataBase.GetConnection();
         string EditId = "";
         public FunctionsPage()
         {
@@ -21,7 +22,6 @@ namespace KursovaWPF.Pages
         //--------------------------------------------------|
         private void ButtonInsert_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection connection = DataBase.Connection;
             string Function = TextBoxFunction.Text;
             string Description = TextBoxDesctiption.Text;
             string Example = TextBoxExample.Text;
@@ -64,7 +64,6 @@ namespace KursovaWPF.Pages
             try
             {
                 DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
-                SqlConnection connection = DataBase.Connection;
                 int Functions_id = Convert.ToInt32(dataRowView[0].ToString());
                 int Example_id = 0;
                 SqlCommand command = new SqlCommand($"SELECT Example_id FROM Functions WHERE Function_id = {Functions_id}", connection);
@@ -93,7 +92,6 @@ namespace KursovaWPF.Pages
         {
             try
             {
-                SqlConnection connection = DataBase.Connection;
                 SqlCommand command = new SqlCommand($"UPDATE Functions SET [Function] = '{TextBoxUpdateFunction.Text}' WHERE Function_id = {EditId}", connection);
                 command.ExecuteNonQuery();
                 command.CommandText = $"UPDATE Examples SET Example = '{TextBoxUpdateExample.Text}',Description = '{TextBoxUpdateDesctiption.Text}' WHERE Example_id = (SELECT Example_id FROM Functions WHERE Function_id = {EditId})";
@@ -114,7 +112,6 @@ namespace KursovaWPF.Pages
                 MessageBox.Show("Введіть назву функції", "Незаповнене поле", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            SqlConnection connection = DataBase.Connection;
             SqlCommand com = new SqlCommand("SELECT Functions.Function_id,Functions.[Function],Examples.Example,Examples.Description FROM Functions" +
                $" JOIN Examples ON Functions.Example_id = Examples.Example_id WHERE Functions.[Function] LIKE ('%{TextBoxSearch.Text}%')", connection);
             SqlDataAdapter adapter = new SqlDataAdapter(com);
@@ -156,7 +153,6 @@ namespace KursovaWPF.Pages
         //--------------------------------------------------|
         void LoadTable()
         {
-            SqlConnection connection = DataBase.Connection;
             SqlCommand com = new SqlCommand("SELECT Functions.Function_id,Functions.[Function],Examples.Example,Examples.Description FROM Functions" +
                 " JOIN Examples ON Functions.Example_id = Examples.Example_id", connection);
             SqlDataAdapter adapter = new SqlDataAdapter(com);

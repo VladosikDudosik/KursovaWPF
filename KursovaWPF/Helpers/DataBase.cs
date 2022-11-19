@@ -4,7 +4,11 @@ namespace KursovaWPF.Helpers
     public static class DataBase
     {
         static string connectionString = @"Data Source=DESKTOP-SU7SNM7\SQLEXPRESS01;Initial Catalog=KursovaDB;Integrated Security=True";
-        static public SqlConnection Connection = new SqlConnection(connectionString);
+        static SqlConnection Connection = new SqlConnection(connectionString);
+        static public SqlConnection GetConnection()
+        {
+            return Connection;
+        }
         static public bool OpenConnection()
         {
             try
@@ -28,12 +32,6 @@ namespace KursovaWPF.Helpers
             {
                 return false;
             }
-        }
-        static public SqlDataReader Select(string command)
-        {
-            SqlCommand sqlCommand = new SqlCommand(command,Connection);
-            SqlDataReader res = sqlCommand.ExecuteReader();
-            return res;
         }
     }
 }

@@ -8,6 +8,7 @@ namespace KursovaWPF.Pages
 {
     public partial class DataTypesGuestPage : Page
     {
+        SqlConnection connection = DataBase.GetConnection();
         public DataTypesGuestPage()
         {
             InitializeComponent();
@@ -18,7 +19,6 @@ namespace KursovaWPF.Pages
         }
         void LoadTable()
         {
-            SqlConnection connection = DataBase.Connection;
             SqlCommand com = new SqlCommand("SELECT DataTypes.DataType as 'Тип даних',Examples.Example as 'Приклад',Examples.Description as 'Опис' FROM DataTypes" +
                 " JOIN Examples ON DataTypes.Example_id = Examples.Example_id", connection);
             SqlDataAdapter adapter = new SqlDataAdapter(com);
@@ -36,7 +36,6 @@ namespace KursovaWPF.Pages
                 MessageBox.Show("Введіть тип даних", "Незаповнене поле", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            SqlConnection connection = DataBase.Connection;
             SqlCommand com = new SqlCommand("SELECT DataTypes.DataType as 'Тип даних',Examples.Example as 'Приклад',Examples.Description as 'Опис' FROM DataTypes" +
                $" JOIN Examples ON DataTypes.Example_id = Examples.Example_id WHERE DataTypes.DataType LIKE ('%{TextBoxSearch.Text}%')", connection);
             SqlDataAdapter adapter = new SqlDataAdapter(com);

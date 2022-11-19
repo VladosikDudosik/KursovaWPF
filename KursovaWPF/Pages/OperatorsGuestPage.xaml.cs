@@ -8,6 +8,7 @@ namespace KursovaWPF.Pages
 {
     public partial class OperatorsGuestPage : Page
     {
+        SqlConnection connection = DataBase.GetConnection();
         public OperatorsGuestPage()
         {
             InitializeComponent();
@@ -47,7 +48,7 @@ namespace KursovaWPF.Pages
                 MessageBox.Show("Оберіть тип", "Незаповнене поле", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            SqlConnection connection = DataBase.Connection;
+            
             SqlCommand com;
             switch (ComboBoxSearch.SelectedIndex)
             {
@@ -81,7 +82,6 @@ namespace KursovaWPF.Pages
         void FillComboBoxOperatorsTypes(ComboBox box)
         {
             box.Items.Clear();
-            SqlConnection connection = DataBase.Connection;
             SqlCommand com = new SqlCommand("SELECT Type FROM TypesOfOperators", connection);
             SqlDataReader read = com.ExecuteReader();
             while (read.Read())
@@ -92,7 +92,6 @@ namespace KursovaWPF.Pages
         }
         void LoadTable()
         {
-            SqlConnection connection = DataBase.Connection;
             SqlCommand com = new SqlCommand("SELECT Operators.Operator as 'Оператор',Operators.Operator_name as 'Назва',TypesOfOperators.Type as 'Тип',Examples.Example as 'Приклад',Examples.Description as 'Опис' FROM Operators" +
                 " JOIN Examples ON Operators.Example_id = Examples.Example_id" +
                 " JOIN TypesOfOperators ON Operators.Type_id = TypesOfOperators.Type_id", connection);
